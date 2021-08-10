@@ -1,0 +1,13 @@
+data_dir = "data"
+
+target_rpc_url = "http://127.0.0.1:8114"
+target_tcp_subcribe_ip = "127.0.0.1:18114"
+from_rpc_url = "http://127.0.0.1:8114"
+start_number = 5022100
+
+[logger]
+filter = "info"
+color = true
+log_to_file = false
+log_to_stdout = true
+
