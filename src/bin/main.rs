@@ -1,4 +1,4 @@
-use ckb_jsonrpc_types::{PoolTransactionEntry, PoolTransactionReject, Status};
+use ckb_jsonrpc_types::{OutputsValidator, PoolTransactionEntry, PoolTransactionReject, Status};
 use ckb_logger::{info, warn};
 use ckb_logger_config::Config as LogConfig;
 use ckb_types::{
@@ -126,7 +126,11 @@ impl OldClient {
                 .unwrap();
 
             for tx in block.transactions.into_iter().skip(1) {
-                match self.new_rpc.send_transaction(&tx.inner, None).await {
+                match self
+                    .new_rpc
+                    .send_transaction(&tx.inner, Some(OutputsValidator::Passthrough))
+                    .await
+                {
                     Ok(hash) => {
                         info!("submit tx {} to fork node", hash);
                         self.sender.send(hash).unwrap();
