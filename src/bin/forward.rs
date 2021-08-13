@@ -144,6 +144,8 @@ impl OldClient {
                 };
             }
 
+            sleep(Duration::from_millis(500)).await;
+
             loop {
                 self.tip_number = self
                     .old_rpc

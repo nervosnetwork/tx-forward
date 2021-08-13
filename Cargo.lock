@@ -1717,6 +1717,7 @@ dependencies = [
  "futures 0.3.16",
  "jsonrpc-core 18.0.0",
  "path-clean",
+ "regex",
  "reqwest",
  "serde",
  "serde_json",
